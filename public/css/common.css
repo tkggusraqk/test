@@ -1,0 +1,518 @@
+html,
+body {
+	width: 100%;
+	height: 100%;
+}
+
+[v-cloak] {
+	visibility: hidden;
+}
+
+.style-hotwords-left {
+	border-left: 0px;
+	border-top: 0px;
+	border-bottom: 0px;
+}
+
+.style-hotwords-right {
+	border-right: 0px;
+	border-top: 0px;
+	border-bottom: 0px;
+}
+
+.style-hint-color {
+	color: #AAAAAA;
+}
+
+.style-item-padding {
+	padding: 5px;
+	text-align: center;
+	display: block;
+}
+
+.style-item-margin-top {
+	margin-top: 10px;
+}
+
+.style-color-red {
+	color: #CF2D28;
+}
+
+.style-text-title {
+	color: #000000;
+	font-weight: bold;
+}
+
+.style-text-tips {
+	color: #AAAAAA;
+	font-size: 13px;
+}
+
+.style-text-content {
+	color: #000000;
+	font-weight: normal;
+	font-size: 14px;
+}
+
+.style-list-mediaobj {
+	width: 80px;
+	height: 60px;
+}
+
+.style-below-title {
+	margin-top: 48px;
+}
+
+.style-bg_color {
+	background-color: #f4f5f6;
+}
+
+.style-fore-color {
+	background-color: #FFFFFF;
+}
+
+.mui-bar {
+	background-color: #D33D3C;
+}
+
+.mui-title {
+	color: #fff;
+}
+
+.mui-bar a {
+	color: #fff;
+	font-size: 16px;
+}
+
+.style-transparent {
+	background-color: transparent;
+}
+
+.style-btn-theme,
+input[type=submit] {
+	color: #fff;
+	border: 1px solid #D33D3C;
+	background-color: #D33D3C
+}
+
+.style-btn-theme:enabled:active,
+input[type=submit]:enabled:active {
+	color: #fff;
+	border: 1px solid #BC1717;
+	background-color: #BC1717
+}
+
+a {
+	color: #D33D3C;
+}
+
+.style-theme-color {
+	color: #D33D3C;
+}
+
+a:active {
+	color: #EF6F6F;
+}
+
+.style-bar-nav-title {
+	text-align: left;
+}
+
+.mui-bar input[type='search'] {
+	font-size: 16px;
+	height: 30px;
+	text-align: center;
+	border: 0;
+	border-radius: 0px;
+	background-color: #EEEEEE;
+}
+
+.style-head-icon:hover {
+	color: #FFFFFF;
+}
+
+.style-table-view-cell-padding {
+	padding: 11px 15px 10px 15px;
+}
+
+.style-list-title-height {
+	height: 44px;
+	overflow: hidden;
+	vertical-align: middle;
+	display: table-cell;
+}
+
+.style-list-content-height {
+	height: 36px;
+	overflow: hidden;
+	vertical-align: middle;
+	display: table-cell;
+}
+
+.style-detail-title-height {
+	height: 66px;
+	overflow: hidden;
+	vertical-align: middle;
+	display: table-cell;
+}
+
+.style-detail-title-line {
+	line-height: 1.5em
+}
+
+.style-time-margin-top {
+	margin-top: 15px;
+}
+
+.style-time-margin-top span {
+	margin-right: 10px;
+}
+
+.style-mui-table-view>li {
+	border-bottom: 1px solid #eee;
+}
+
+.style-mui-table-view>li>img {
+	height: 80px;
+}
+
+
+.de-overlay .loader {
+	display: block;
+}
+
+.mui-loading {
+	position: relative;
+	margin-top: 50%;
+	height: 100%;
+	width: 100%;
+	font-size: 14px;
+	text-align: center;
+	z-index: 9999;
+}
+
+#main {
+	width: 100%;
+	height: 100%;
+}
+
+.adaptive-img {
+	width: 100%;
+	height: 100%;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	background-size: cover;
+}
+
+.hidden {
+	display: none;
+}
+
+
+
+
+
+
+
+
+
+/*长按事件屏蔽*/
+
+* {
+	-webkit-touch-callout: none;
+	/*系统默认菜单被禁用*/
+	-webkit-user-select: none;
+	/*webkit浏览器*/
+	-khtml-user-select: none;
+	/*早期浏览器*/
+	-moz-user-select: none;
+	/*火狐*/
+	-ms-user-select: none;
+	/*IE10*/
+	user-select: none;
+}
+
+.toolength {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+
+
+
+
+
+
+
+
+/*“返回” 矫正*/
+
+.mui-icon-left-nav span {
+	font-size: 16px;
+}
+
+
+
+
+
+
+
+
+
+/**
+ * 修复标题顶部边距不均匀问题
+ */
+
+.fix-top {
+	padding-top: 2px;
+}
+
+
+
+
+
+
+
+
+
+/**
+ * 修复列表table-view-cell边距不均匀问题
+ */
+
+.fix-mui-table-view-cell {
+	padding: 13px 15px 9px 15px;
+}
+
+.style-bottom {
+	position: relative;
+	top: 10px;
+}
+
+
+
+
+
+
+
+
+
+/*分享弹出样式*/
+
+.share td {
+	text-align: center;
+}
+
+.share td img {
+	height: 60px;
+	margin: 0 auto;
+}
+
+.share td span {
+	color: black;
+	font-size: 12px;
+}
+
+.share table {
+	width: 100%;
+	height: 180px;
+	border: solid 0px;
+	background: #f4f4f4
+}
+
+.share .cancel-btn {
+	height: 50px;
+}
+
+.share .cancel-btn button {
+	width: 100%;
+	border: solid 0px;
+	height: 50px;
+}
+
+.partyMemberIcon {
+	position: absolute;
+	width: 12px;
+	height: 12px;
+	left: 35px;
+	top: 31px;
+}
+
+
+
+
+
+
+
+
+
+/*用于解决代码闪屏 直接写在div标签中*/
+
+[v-cloak] {
+	display: none;
+}
+
+.style-nav-right {
+	color: white;
+	line-height: 44px;
+}
+
+.orangeRect {
+	width: 50px;
+	height: 20px;
+	border: #f4731c solid 1px;
+	color: #f4731c;
+	padding: 1px;
+	text-align: center;
+	line-height: 20px;
+	position: relative;
+	border-radius: 2px;
+	font-size: 10.92px;
+}
+
+.orangeRect+span {
+	margin-left: 3px;
+}
+
+.img-radius {
+	border-radius: 5px;
+	height: 100%;
+	width: 100%;
+	text-align: center;
+	position: relative;
+	top: 0px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	z-index: 1;
+}
+
+.img-radius img {
+	width: 100%;
+	height: 100%;
+	border-radius: 5px;
+	position: relative;
+	z-index: 1;
+	top: 0px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+}
+
+.mui-active {
+	color: #D33D3C !important;
+	font-weight: bold;
+}
+
+
+
+/**
+ * 通用样式
+ */
+
+.empty-data {
+	width: 73px;
+	height: 48px;
+	margin: 0 auto;
+	background-size: 100% 100%;
+	background: url(../images/empty.png);
+}
+
+.loaderrs {
+	width: 100%;
+	height: 48px;
+	background: url(../images/loding.gif) no-repeat;
+	background-size: contain;
+	background-position: 48% 50%;
+}
+
+.loadtips_text {
+	width: 100%;
+	height: 20px;
+	text-align: center;
+}
+
+.sySTEM_ERROR {
+	background: url(../images/server_exception.png);
+}
+
+.no_NETWORK {
+	background: url(../images/no_network.png);
+}
+
+.loader {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	padding: 60% 0;
+	width: 100vw;
+	height: 100vh;
+	color: #888;
+	font-size: 14px;
+	text-align: center;
+	display: none;
+	background: white;
+	z-index: 99;
+}
+
+.lodes {
+	position: fixed;
+	top: 44px;
+	bottom: 0;
+	padding: 60% 0;
+	width: 100vw;
+	height: 100vh;
+	color: #888;
+	font-size: 14px;
+	text-align: center;
+	display: none;
+	background: white;
+	z-index: 99;
+}
+
+.de-overlay .loader {
+	display: block;
+}
+
+.de-overlay .lodes {
+	display: block;
+}
+
+.form-row {
+	border-top: 8px solid #f4f5f6;
+}
+
+.form-row.mui-input-row label {
+	line-height: 1.5;
+}
+
+.form-row.mui-input-row input {
+	margin-top: 2px;
+}
+
+.mui-bar a {
+	color: white !important;
+}
+
+#main {
+	position: relative;
+}
+
+.text-align-right {
+	text-align: right;
+}
+
+.mui-icon-left-nav {
+	color: white !important;
+}
+
+.icon-dianzan,
+.icon-fenxiang,
+.party-icon-pinglun {
+	font-size: 1.3em !important;
+}
+
+/* 点赞，收藏样式 */
+.user-active {
+	color: rgb(211, 61, 60);
+  }
