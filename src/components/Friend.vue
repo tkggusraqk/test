@@ -237,13 +237,20 @@ export default {
         this.likediv = false;
       }, 200);
       this.commentHide(item);
+      var isLike = true
       if (!item.suporthtml || item.suporthtml == "赞") {
         item.suporthtml = "取消";
         item.likeList.push(this.userInfo.name)
       } else {
         item.suporthtml = "赞";
         item.likeList.pop();
+        isLike = false
       }
+      $.post(this.apiUrl + 'social/like/?token=' + utils.token, { id: item.id, operate: isLike }, function (res) {
+        if (res.code === 200) {
+
+        }
+      })
     },
     criticismThing(item, index) {//评论  
       this.itemlist = item;
