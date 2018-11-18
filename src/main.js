@@ -4,7 +4,7 @@ import router from './router'
 import App from './App.vue'
 import utils from './assets/js/utils'
 import VueLazyload from 'vue-lazyload'
-import $ from 'jQuery'
+import $ from 'jquery'
 
 Vue.use(VueLazyload)
 

@@ -171,7 +171,7 @@ export default {
             }
             this.circleData = this.circleData.concat(res.data)
           } else {
-            if (res.data.length === 0) {
+            if (res.data && res.data.length === 0) {
               mui.toast('没有更多数据了')
             }
           }
