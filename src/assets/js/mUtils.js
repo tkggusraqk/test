@@ -175,7 +175,7 @@ export const animate = (element, target, duration = 400, mode = 'ease-out', call
 
 export const getQueryString = function (name) {
     var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
-    var r = window.location.search.substr(1).match(reg);
+    var r = window.location.href.substr(window.location.href.lastIndexOf('?') + 1).match(reg);
     if (r != null) {
         return unescape(r[2]);
     }
