@@ -1,34 +1,45 @@
 <template>
-  <div class="child_page ">
+  <div class="child_page">
     <div class="friend_wipe" ref="friend">
-      <div class="friend ">
+      <div class="friend">
         <div class="condition">
           <ul id="friend_item">
             <li class="condition_li" v-for="(item,index) in circleData" :key="item.id">
               <div class="condition_left">
-                <img v-lazy="baseUrl+item.member_photo" alt="">
+                <img v-lazy="baseUrl+item.member_photo" style="border-radius:5px;" alt>
               </div>
               <div class="condition_right">
                 <h1 style="text-align:left;">{{item.member_name}}</h1>
-                <div class="publishtext" style="text-align:left;margin-top:5px;">
-                  {{item.content}}
-                </div>
+                <div class="publishtext" style="text-align:left;margin-top:5px;">{{item.content}}</div>
                 <div class="publishimg clear" v-show="item.imgs.length>0">
                   <div class="box-wrap">
-                    <div class="box" v-for="value in item.imgs.split(',')" :key="value" v-lazy:background-image="baseUrl+value" style="backgroundSize:cover;">
-                    </div>
+                    <div
+                      class="box"
+                      @tap="imageViewer(item.imgs)"
+                      v-for="value in item.imgs.split(',')"
+                      :key="value"
+                      v-lazy:background-image="baseUrl+value"
+                      style="backgroundSize:cover;"
+                    ></div>
                   </div>
                 </div>
                 <div class="commentbutton">
                   <div class="button_left clear">
                     <span>{{ formatDate(item.create_time)}}</span>
-                    <span v-show="userInfo.id == item.user_id ? true : false" @click="delItem(item)">删除</span>
+                    <span
+                      v-show="userInfo.id == item.user_id ? true : false"
+                      @click="delItem(item)"
+                    >删除</span>
                   </div>
                   <div class="button_right">
                     <svg class="button_svg" @click="showDiscuss(item)">
                       <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#comment"></use>
                     </svg>
-                    <div class="discuss" v-if="item.criticism" :class="{discusshow : item.reviewshow, discusshide : item.reviewhide}">
+                    <div
+                      class="discuss"
+                      v-if="item.criticism"
+                      :class="{discusshow : item.reviewshow, discusshide : item.reviewhide}"
+                    >
                       <div @click="supportThing(item)">
                         <svg fill="#fff" :class="{surportdiv : likediv}" style="margin-top:3px;">
                           <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#like"></use>
@@ -45,20 +56,40 @@
                   </div>
                 </div>
 
-                <div class="retext" v-show="item.likeList.length >0 || item.recent_replies.length > 0">
-                  <svg class="retext_trigon" fill="#efefef" style="">
+                <div
+                  class="retext"
+                  v-show="item.likeList.length >0 || item.recent_replies.length > 0"
+                >
+                  <svg class="retext_trigon" fill="#efefef" style>
                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#trigon"></use>
                   </svg>
-                  <div class="retext_like clear" :class="{likeborder : item.recent_replies.length >0 }" v-show="item.likeList.length > 0">
+                  <div
+                    class="retext_like clear"
+                    :class="{likeborder : item.recent_replies.length >0 }"
+                    v-show="item.likeList.length > 0"
+                  >
                     <svg class="retext_like_svg" fill="#8792b0" style="margin-top:3px;">
                       <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#like"></use>
                     </svg>
-                    <span v-for="value in item.likeList" :key="value">{{value}}<i>,</i></span>
+                    <span v-for="value in item.likeList" :key="value">
+                      {{value}}
+                      <i>,</i>
+                    </span>
                   </div>
                   <div class="retext_revert" v-show="item.recent_replies.length > 0">
                     <ul>
-                      <li v-for="(value,index) in item.recent_replies" :key="index" style="text-align: left; display:flex;">
-                        <span style="text-align:left;min-width:50px;">{{value.member_name}}：</span><span style="flex:1;word-break:break-all;">{{value.comment}}</span><span v-show="userInfo.id == value.user_id ? true : false" @click="delReply(item,index)" style="min-width:30px; text-align:right;">删除</span>
+                      <li
+                        v-for="(value,index) in item.recent_replies"
+                        :key="index"
+                        style="text-align: left; display:flex;"
+                      >
+                        <span style="text-align:left;min-width:50px;">{{value.member_name}}：</span>
+                        <span style="flex:1;word-break:break-all;">{{value.comment}}</span>
+                        <span
+                          v-show="userInfo.id == value.user_id ? true : false"
+                          @click="delReply(item,index)"
+                          style="min-width:30px; text-align:right;"
+                        >删除</span>
                       </li>
                     </ul>
                   </div>
@@ -70,7 +101,17 @@
         <!-- 评论 -->
         <div class="criticism" v-if="criticismstate">
           <div class="criticism_con">
-            <textarea name="" id="" cols="1" rows="10" style="width:100%" ref="textinput" v-model="textareaVlue" @input="inputCriticism" @keyup.enter="enterThing"></textarea>
+            <textarea
+              name
+              id
+              cols="1"
+              rows="10"
+              style="width:100%"
+              ref="textinput"
+              v-model="textareaVlue"
+              @input="inputCriticism"
+              @keyup.enter="enterThing"
+            ></textarea>
             <span :class="{notempty:changeinput}" @click="commentSend">发送</span>
           </div>
         </div>
@@ -301,6 +342,16 @@ export default {
           }, 10000);
         }
       }
+    },
+    imageViewer(imgs) {
+      var urls = imgs.split(',').map(value => {
+        return this.baseUrl + value
+      })
+      plus.nativeUI.previewImage(urls, {
+        current: 0,
+        loop: false,
+        indicator: 'number'
+      })
     }
   }
 }
