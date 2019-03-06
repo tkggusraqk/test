@@ -15,11 +15,11 @@
                   <div class="box-wrap">
                     <div
                       class="box"
-                      @tap="imageViewer(item.imgs)"
-                      v-for="value in item.imgs.split(',')"
+                      v-for="(value,index) in item.imgs.split(',')"
                       :key="value"
                       v-lazy:background-image="baseUrl+value"
                       style="backgroundSize:cover;"
+                      @tap="imageViewer(item.imgs,index)"
                     ></div>
                   </div>
                 </div>
@@ -343,12 +343,12 @@ export default {
         }
       }
     },
-    imageViewer(imgs) {
+    imageViewer(imgs, index) {
       var urls = imgs.split(',').map(value => {
         return this.baseUrl + value
       })
       plus.nativeUI.previewImage(urls, {
-        current: 0,
+        current: index,
         loop: false,
         indicator: 'number'
       })
