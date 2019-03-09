@@ -15,7 +15,7 @@
                   <div class="box-wrap">
                     <div
                       class="box"
-                      v-for="(value,index) in item.imgs.split(',')"
+                      v-for="(value,index) in item.imgs"
                       :key="value"
                       v-lazy:background-image="baseUrl+value"
                       style="backgroundSize:cover;"
@@ -207,6 +207,7 @@ export default {
               res.data[i].criticism = false;
               res.data[i].reviewshow = false;
               res.data[i].reviewhide = true;
+              res.data[i].imgs = res.data[i].imgs.split(',');
               this.getLikeList(i, res.data[i].id)
               this.getReplyList(i, res.data[i].id)
             }
@@ -306,12 +307,16 @@ export default {
       this.textareaVlue ? this.changeinput = true : this.changeinput = false;
     },
     delItem(item) {
-      $.post(this.apiUrl + 'social/delete?token=' + utils.token, { id: item.id }, function (res) {
-        if (res.code === 200) {
-          this.circleData = []
-          this.getFriendList()
-        }
-      }.bind(this))
+      if (plus) {
+        plus.nativeUI.confirm('确定要删除吗', function (e) {
+          $.post(this.apiUrl + 'social/delete?token=' + utils.token, { id: item.id }, function (res) {
+            if (res.code === 200) {
+              this.circleData = []
+              this.getFriendList()
+            }
+          }.bind(this))
+        }.bind(this));
+      }
     },
     delReply(item, index) {
       $.post(this.apiUrl + 'social/delete-reply?token=' + utils.token, { reply_id: item.recent_replies[index].id }, function (res) {
@@ -344,9 +349,9 @@ export default {
       }
     },
     imageViewer(imgs, index) {
-      var urls = imgs.split(',').map(value => {
+      var urls = JSON.parse(JSON.stringify(imgs.map(value => {
         return this.baseUrl + value
-      })
+      })))
       plus.nativeUI.previewImage(urls, {
         current: index,
         loop: false,
