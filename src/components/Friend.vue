@@ -17,7 +17,7 @@
                       class="box"
                       v-for="(value,index) in item.imgs"
                       :key="value"
-                      v-lazy:background-image="baseUrl+value"
+                      v-lazy:background-image="baseUrl+value+'?thumb=1&w=128&h=128'"
                       style="backgroundSize:cover;"
                       @tap="imageViewer(item.imgs,index)"
                     ></div>
@@ -312,6 +312,7 @@ export default {
           $.post(this.apiUrl + 'social/delete?token=' + utils.token, { id: item.id }, function (res) {
             if (res.code === 200) {
               this.circleData = []
+              this.lastId = null
               this.getFriendList()
             }
           }.bind(this))
